@@ -2,45 +2,35 @@
 
 2. SELECT DISTINCT country FROM customers;
 
-3. SELECT DISTINCT Customer's ID FROM customers WHERE Customers ID LIKE 'BL%';
+3. SELECT * FROM customers WHERE customers.CustomerID LIKE 'BL%'; *******fixed
 
 4. SELECT * FROM orders LIMIT 100;
 
-5. SELECT DISTINCT postal codes FROM customers WHERE postal code = '1010' 
-OR postal code = '3012' OR postal code = '12209' OR postal code = '05023';
+5. SELECT * FROM customers WHERE PostalCode = '1010' 
+OR PostalCode = '3012' OR PostalCode = '12209' OR PostalCode = '05023'; ******fixed
 
-6. SELECT DISTINCT ShipRegion FROM orders WHERE ShipRegion IS NOT NULL;
+6. SELECT * FROM orders WHERE ShipRegion IS NOT NULL; *************fixed
 
 7. SELECT * FROM customers
    ORDER BY country, city;
 
-8. INSERT INTO customers(column1)
-   VALUES ('Brandon Bath');
+8. INSERT INTO customers (CustomerID, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax) ********fixed
+   VALUES ('BBath, 'Bath Enterprises', 'Brandon Bath', 'CEO', '555 Main St.', 'Detroit', 'DT', '48198', 'United States', '555-555-5555', '333-333-3333)
 
-9. 
+9. UPDATE orders SET shipregion = 'EuroZone' WHERE shipcountry = 'France';
 
-10. DELETE FROM orders
-    WHERE order details = 1;
+10. DELETE FROM `order details` WHERE quantity = '1';
 
-11. SELECT max(order details), min(order details), avg(order details) FROM orders;
+11. SELECT max(Quanity), min(Quantity), avg(Quantity) FROM `order details`; 
 
-12. SELECT max(order details), min(order details), avg(order details) FROM orders GROUP BY orderid;
+12. SELECT max(`order details`), min(`order details`), avg(`order details`) FROM orders GROUP BY orderid;
 
-13. 
+13. SELECT CustomerID FROM orders WHERE `orderid` = '10290';
 
-14.
+14. SELECT * FROM order o
+    LEFT OUTER JOIN customers c
+    On o.CustomerID = c.CustomerID;  ******* --Not working?
 
-15.
+15. SELECT employees.FirstName from employees WHERE ReportsTo is null; *******fixed
 
-16.
-
-
-
-9. Update all ShipRegion to the value ‘EuroZone’ in the Orders table, where the
-ShipCountry is equal to France. (Note: this requires safe updates to be turned off.
-Search online for more info.)
-13. Find the CustomerID that placed order 10290 (orders table)
-14. Do an inner join, left join, right join on orders and customers tables. (These are
-three separate queries, one for each type of join.)
-15. Get employees’ firstname for all employees who report to no one.
-16. Get employees’ firstname for all employees who report to Andrew.
+16. SELECT employees.FirstName FROM employees WHERE ReportsTo = '2'; 
